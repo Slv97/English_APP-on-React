@@ -1,12 +1,18 @@
 import React from 'react';
 import './App.css';
+import Nav from './Components/Nav/Nav'
+import Score from './Components/Score'
+import Page from './Components/Page'
 
-function App() {
+const App = () => {
+  let score = '0'
   return (
-    <div className="App">
-      
-    </div>
-  );
+      <div className="app-wrapper">
+          <Nav />
+          <Score score={score} />
+          <Page />
+      </div>
+  )
 }
 
 export default App;

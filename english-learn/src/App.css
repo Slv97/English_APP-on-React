@@ -1,38 +1,119 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: "Roboto", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav {
+  max-width: 295px;
+  height: 1024px;
+  left: 0;
+  top: 0;
+
+  background: #20b887;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.nav-container {
+  display: grid;
+  row-gap: 30px;
+  list-style-type: none;
   color: white;
+  margin: 0;
+  padding: 150px 0 0 0;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-container li {
+  padding: 15px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.active {
+  background: #f9fbff;
+  color: #20b887;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-right: -30px;
+}
+
+.logo-container {
+  display: grid;
+  grid-auto-flow: column;
+  padding: 30px;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.level-title {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 42px;
+  text-transform: uppercase;
+
+  color: #6ff3c8;
+}
+
+.btn-round:focus {
+  outline: none;
+}
+
+.btn-round {
+  cursor: pointer;
+  width: 54px;
+  height: 54px;
+
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
+.btn-round.add {
+  background-image: url("./img/add.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-round.check {
+  background-image: url("./img/check.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1aad7e;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+.app-wrapper {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.label-title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: rgba(0, 0, 0, 0.53);
+}
+
+.add-word-container input {
+  padding: 8px 13px;
+}
+
+.add-word-container,
+.add-word-container > div {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.add-word-container {
+  margin-top: 50px;
 }
