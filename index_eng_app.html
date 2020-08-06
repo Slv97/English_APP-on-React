@@ -36,10 +36,6 @@
                 </nav>
             )
         }
-        const myFunc = (name) => {
-            console.log('hello ' + name)
-        }
-        myFunc('Ivan')
 
         const Score = (props) => {
             return (
@@ -48,18 +44,28 @@
                 </span>
             )
         }
-        const Page = () => {
+        const AddWord = () => {
             return (
                 <div>
+                    <button className="btn-round add"></button>
+                </div>
+            )
+        }
+
+        
+        const Page = () => {            
+            return (
+                <div>
+                    <AddWord />
                 </div>
             )
         }
         const App = () => {
             let score = '0'
             return (
-                <div>
+                <div className="app-wrapper">
                     <Nav />
-                    <Score score={score}/>
+                    <Score score={score} />
                     <Page />
                 </div>
             )
