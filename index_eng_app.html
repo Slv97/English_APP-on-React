@@ -64,8 +64,18 @@
             render() {
                 return (
                     <div>
-                        <button onClick={this.changeMode} className="btn-round add"></button>
-                    </div>
+                        <div className="add-word-container">
+                            {this.state.isOpen ?
+                                <span className="label-title">Add new word</span> : 
+                                <div>
+                                    <input placeholder="Enter new word" />
+                                    <button onClick={this.changeMode} className="btn-round check"></button>
+                                </div>                              
+                                
+                            }
+                            <button onClick={this.changeMode} className="btn-round add"></button>
+                        </div>
+                    </div>                    
                 )
             }
         }

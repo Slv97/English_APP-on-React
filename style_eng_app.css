@@ -79,7 +79,41 @@ body {
   background-repeat: no-repeat;
 }
 
+.btn-round.check {
+  background-image: url("./img/check.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #1aad7e;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
 .app-wrapper {
   display: grid;
   grid-auto-flow: column;
+}
+
+.label-title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: rgba(0, 0, 0, 0.53);
+}
+
+.add-word-container input {
+  padding: 8px 13px;
+}
+
+.add-word-container,
+.add-word-container > div {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.add-word-container {
+  margin-top: 50px;
 }
