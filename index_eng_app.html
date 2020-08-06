@@ -44,22 +44,32 @@
                 </span>
             )
         }
-        const AddWord = () => {
-            return (
-                <div>
-                    <button className="btn-round add"></button>
-                </div>
-            )
+
+        class Page extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    isOpen: true
+                }
+                this.changeMode = this.changeMode.bind(this)
+            }
+
+            changeMode() {
+                this.setState(prevState => ({
+                    isOpen: !prevState.isOpen
+                }))
+                console.log(this.state)
+            }
+
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.changeMode} className="btn-round add"></button>
+                    </div>
+                )
+            }
         }
 
-        
-        const Page = () => {            
-            return (
-                <div>
-                    <AddWord />
-                </div>
-            )
-        }
         const App = () => {
             let score = '0'
             return (
