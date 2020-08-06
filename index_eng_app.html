@@ -16,13 +16,18 @@
     </div>
     
     <script type="text/babel">
+        const LogoContainer = (props) => {
+            return (
+                <div className="logo-container">
+                    <img src="img/logo.svg" alt="Logo_English_APP" />
+                    <span className="level-title"> Level {props.level}</span>
+                </div>
+            )
+        }
         const Nav = () => {
             return (
                 <nav className="nav">
-                <div className="logo-container">
-                    <img src="img/logo.svg" alt="Logo_English_APP" />
-                    <span className="level-title"> Level 0</span>
-                </div>
+                    <LogoContainer level={'0'} />
                     <ul className="nav-container">
                         <li className="active">Library</li>
                         <li>Training</li>
