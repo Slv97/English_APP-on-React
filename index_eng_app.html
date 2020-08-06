@@ -36,7 +36,35 @@
                 </nav>
             )
         }
-        ReactDOM.render(<Nav />, document.getElementById('root'))
+        const myFunc = (name) => {
+            console.log('hello ' + name)
+        }
+        myFunc('Ivan')
+
+        const Score = (props) => {
+            return (
+                <span>
+                    Score: {props.score}
+                </span>
+            )
+        }
+        const Page = () => {
+            return (
+                <div>
+                </div>
+            )
+        }
+        const App = () => {
+            let score = '0'
+            return (
+                <div>
+                    <Nav />
+                    <Score score={score}/>
+                    <Page />
+                </div>
+            )
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
     </script>
     </body>    
 </html>
