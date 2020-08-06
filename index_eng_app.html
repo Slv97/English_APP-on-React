@@ -4,22 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English_APP</title>
+    <link rel="stylesheet" href="style_eng_app.css">
 
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,900;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="root">
-    <!-- <h1>Hello</h1> -->
 </div>
 
 <script type="text/babel">
-    // React.createElement('h1', null, 'Hola!')
-    // console.log(React.createElement('div', null, 'Hola!'))
-    // ReactDOM.render(React.createElement('h1', null, 'Hola!'), document.getElementById('root'))
-    const HelloComponent = () => <div>Hola</div>
-    ReactDOM.render(<HelloComponent />, document.getElementById('root'))
+    const Nav = () => {
+        return (
+            <nav className="nav">
+                <ul className="nav-container">
+                    <li className="active">Library</li>
+                    <li>Training</li>
+                    <li>Learn</li>
+                </ul>
+            </nav>
+        )
+    }
+    ReactDOM.render(<Nav />, document.getElementById('root'))
 </script>
 </body>
 </html>
