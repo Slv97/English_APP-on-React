@@ -2,7 +2,7 @@ import React from 'react'
 
 const Score = (props) => {
     return (
-        <span>
+        <span className='score'>
             Score: {props.score}
         </span>
     )

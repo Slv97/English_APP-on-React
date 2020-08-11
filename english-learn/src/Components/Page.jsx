@@ -4,7 +4,7 @@ class Page extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpen: true,
+            isOpen: false,
             translation: '',
             value: '',
             library: JSON.parse(localStorage.getItem('library')) || [{id: 0, word: '', translate: ''}]
@@ -13,12 +13,18 @@ class Page extends React.Component {
         this.getValue = this.getValue.bind(this)
         this.addWordToLibrary = this.addWordToLibrary.bind(this)
     }
+    componentDidMount() {
+            document.addEventListener('keydown', (event) => {
+                if (this.state.value.length > 0 && this.state.isOpen && event.key === 'Enter') {
+                    this.addWordToLibrary()
+                }
+            })      
+    }
 
     changeMode() {
         this.setState(prevState => ({
             isOpen: !prevState.isOpen
         }))
-        //console.log(this.state)
     }
 
     async addWordToLibrary() {        
@@ -37,11 +43,10 @@ class Page extends React.Component {
             }))
         }    
         await this.setState(prevState => ({
-            library: [...prevState.library, [{id: this.state.value.length, word: this.state.value, translate: this.state.translation}]]
+            library: [...prevState.library, {id: this.state.value.length, word: this.state.value, translate: this.state.translation}]
         }))
-        //await console.log(this.state.library.length + ' add Word with set state')
         await localStorage.setItem('library', JSON.stringify(this.state.library))    
-            console.log(result.outputs[0].output)
+            console.log(this.state)
         }
         catch(error) {
             console.log(error)
@@ -49,7 +54,6 @@ class Page extends React.Component {
     }
 
     async getValue(event) {
-        //console.log(event.currentTarget.value)
         const value = event.currentTarget.value
         this.setState( () => ({
             value: value
@@ -60,24 +64,47 @@ class Page extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="add-word-container">
-                    {this.state.isOpen ?
-                        <span className="label-title">Add new word</span> : 
-                        <div>
-                            <input onChange={this.getValue} placeholder="Enter new word" />
-                            <span>{this.state.translation}</span>
-                            <button onClick={this.addWordToLibrary} className="btn-round check"></button>
-                        </div>                              
+            <div className='page-container'>
+                <div>
+                    <div className="add-word-container">
+                        {this.state.isOpen ?
+                            <span className="label-title">Add new word</span> : 
+                            <div>
+                                <input onChange={this.getValue} placeholder="Enter new word" />
+                                <span>{this.state.translation}</span>
+                                <button onClick={this.addWordToLibrary} className="btn-round check"></button>
+                            </div>   
+                        }
+                        <button onClick={this.changeMode} className="btn-round add"></button>
+                    </div>
+
+                    <div className='library-container'>
+                        <div className='library-header'>
+                            <div>Word</div>
+                            <div>Translate</div>
+                            <div>Learn level</div>
+                        </div>
+                        {this.state.library.map(word => (
+                            <div>
+                                <div>
+                                    {word.id}
+                                </div>
+                                <div>
+                                    {word.word}
+                                </div>
+                                <div>
+                                    {word.translate}
+                                </div>
+                            </div>                        
+                        ))}
                         
-                    }
-                    <button onClick={this.changeMode} className="btn-round add"></button>
-                </div>
-            </div>                    
+                    </div>
+                </div>  
+            </div>                  
         )
     }
 }
 
 export default Page
 
-//47:20
+//lesson3
