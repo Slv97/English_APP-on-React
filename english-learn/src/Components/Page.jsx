@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class Page extends React.Component {
     constructor(props) {
@@ -26,6 +26,13 @@ class Page extends React.Component {
             isOpen: !prevState.isOpen
         }))
     }
+    async removeWordFromLibrary(index) {
+        await this.setState(prevState => ({
+            library: prevState.library.filter((word, i) => i !== index)
+        }))
+        //console.log(this.state.library)
+        await localStorage.setItem('library', JSON.stringify(this.state.library))
+    }
 
     async addWordToLibrary() {        
         try {
@@ -43,10 +50,13 @@ class Page extends React.Component {
             }))
         }    
         await this.setState(prevState => ({
-            library: [...prevState.library, {id: this.state.value.length, word: this.state.value, translate: this.state.translation}]
+            library: [...prevState.library, {id: this.state.library.length, word: this.state.value, translate: this.state.translation}]
         }))
-        await localStorage.setItem('library', JSON.stringify(this.state.library))    
-            console.log(this.state)
+        await localStorage.setItem('library', JSON.stringify(this.state.library))
+        await this.changeMode()
+        await this.setState( () => ({
+            translation: ''
+        }))
         }
         catch(error) {
             console.log(error)
@@ -58,48 +68,44 @@ class Page extends React.Component {
         this.setState( () => ({
             value: value
         }))
-        
-        console.log(this.state.library.length + 'change input')
     }
 
     render() {
         return (
             <div className='page-container'>
-                <div>
-                    <div className="add-word-container">
-                        {this.state.isOpen ?
-                            <span className="label-title">Add new word</span> : 
-                            <div>
-                                <input onChange={this.getValue} placeholder="Enter new word" />
-                                <span>{this.state.translation}</span>
-                                <button onClick={this.addWordToLibrary} className="btn-round check"></button>
-                            </div>   
-                        }
-                        <button onClick={this.changeMode} className="btn-round add"></button>
-                    </div>
+                <div className="add-word-container">
+                    {!this.state.isOpen ?
+                        <span className="label-title">Add new word</span> : 
+                        <div>
+                            <input onChange={this.getValue} placeholder="Enter new word" />
+                            <span>{this.state.translation}</span>
+                            <button onClick={this.addWordToLibrary} className="btn-round check"></button>
+                        </div>   
+                    }
+                    <button onClick={this.changeMode} className={this.state.isOpen ? 'btn-round close' : 'btn-round add'}></button>
+                </div>
 
-                    <div className='library-container'>
-                        <div className='library-header'>
-                            <div>Word</div>
-                            <div>Translate</div>
-                            <div>Learn level</div>
-                        </div>
-                        {this.state.library.map(word => (
-                            <div>
-                                <div>
-                                    {word.id}
-                                </div>
-                                <div>
-                                    {word.word}
-                                </div>
-                                <div>
-                                    {word.translate}
-                                </div>
-                            </div>                        
-                        ))}
-                        
+                <div className='library-container'>
+                    <div className='library-header'>
+                        <div>Word</div>
+                        <div>Translate</div>
+                        <div>Learn level</div>
                     </div>
-                </div>  
+                    {this.state.library.map((word, index) => (
+                        <div key={index}>
+                             <div>
+                                {word.id}
+                            </div>
+                            <div>
+                                {word.word}
+                            </div>
+                            <div>
+                                {word.translate}
+                            </div>
+                            <div onClick={() => this.removeWordFromLibrary(index)}> Delete </div>
+                        </div>                        
+                    ))}
+                </div>
             </div>                  
         )
     }
@@ -107,4 +113,4 @@ class Page extends React.Component {
 
 export default Page
 
-//lesson3
+//19:16

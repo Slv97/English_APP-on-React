@@ -73,10 +73,16 @@ body {
   border-radius: 50%;
 }
 
-.btn-round.add {
+.btn-round.add,
+.btn-round.close {
   background-image: url("./img/add.svg");
   background-position: center;
   background-repeat: no-repeat;
+  transition: 0.2s linear;
+}
+
+.btn-round.close {
+  transform: rotate(45deg);
 }
 
 .btn-round.check {
@@ -153,7 +159,7 @@ body {
 
 .library-container > div {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
   font-style: normal;
   font-weight: normal;
