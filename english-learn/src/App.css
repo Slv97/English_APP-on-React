@@ -95,6 +95,27 @@ a.active {
   box-sizing: border-box;
 }
 
+.btn-next {
+  cursor: pointer;
+  font-size: 40px;
+  justify-self: end;
+  padding: 0px 15px 4px 60px;
+  background-color: #0C9267;
+  color: white;
+}
+
+.btn-repeat {
+  cursor: pointer;
+  text-align: center;
+  border-radius: 50%;
+  margin: 30px auto 0;
+  padding: 19px 15px 19px 24px;
+  width: 84px;
+  font-weight: bold;
+  background-color: #0C9267;
+  color: white;
+}
+
 .app-wrapper {
   display: grid;
   grid-template-columns: 360px auto;
@@ -218,7 +239,7 @@ a.active {
   background: rgba(242, 246, 254, 0.46);
   border: 1px solid rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
-  padding: 60px 120 px;
+  padding: 60px 120px;
 }
 
 .percentage {
@@ -263,13 +284,6 @@ a.active {
   row-gap: 30px;
   margin-top: 117px;
   justify-content: center;
-}
-
-.btn-next {
-  justify-self: end;
-  padding: 4px 40px;
-  background-color: #0C9267;
-  color: white;
 }
 
 .word-container {

@@ -1,22 +1,65 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Learn = () => {
+    const library = JSON.parse(localStorage.getItem('library')) || [{id: 0, word: '', translate: ''}]
+    const [index, setIndex] = useState(0)  
+    const [end, setEnd] = useState(false) 
+    const word = library[index]
+    
+    const repeatLearn = () => {
+        setEnd(false) 
+        setIndex(0)
+    }    
+    
+    const nextWord = () => {
+        if (library.length - 1 !== index) {
+           setIndex(index+1) 
+        } else {
+            //console.log('Well done')
+            setEnd(true)
+        }        
+    }  
+    
     return (
         <div className='learn-wrapper'>
             <div className='learn-container'>
-                <div className='percentage'>50%</div>
+                {!end ?
+                    <div className='percentage'>
+                        50%
+                    </div> 
+                    :
+                    null
+                }
 
                 <div className='word-translation'>
-                    Forest
+                    {!end ?
+                          word.translate
+                          :
+                         <div> Well done!
+                            <div onClick={repeatLearn} className='btn-repeat'> 
+                                &#10227;
+                            </div>
+                         </div>
+                    }
                 </div>
 
-                <div className='word-container'>
-                    <span className='description-label'>Translation</span>
+                {!end ? 
+                    <div className='word-container'>
+                        <span className='description-label'>Translation:</span>
 
-                    <span className='word'>Лес</span>
-                </div>
+                        <span className='word'>{word.word}</span>
+                    </div> 
+                    :
+                    null
+                }
 
-                <div className='btn-next'> &#8594;	</div>
+                {!end ? 
+                    <div onClick={nextWord} className='btn-next'> 
+                        &#8594;	
+                    </div>
+                    :
+                    null 
+                } 
             </div>
         </div>        
     )
