@@ -118,8 +118,7 @@ a.active {
 
 .app-wrapper {
   display: grid;
-  grid-template-columns: 360px auto;
-  justify-content: space-between;
+  grid-template-columns: 350px auto;
 }
 
 .label-title {
@@ -292,4 +291,55 @@ a.active {
   box-sizing: border-box;
   text-align: center;
   padding: 15px;
+}
+
+.mode-container > div:first-child {
+  display: grid;
+  align-content: space-between ;
+  min-width: 280px;
+}
+
+.mode-container:hover {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.mode-container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  background: rgba(215, 228, 255, 0.46);
+  padding: 25px 55px 55px 55px;
+}
+
+.hard-mode {
+  background: rgba(176, 222, 255, 0.46);
+}
+
+.mode-title {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 42px;
+  color: #036344;
+}
+
+.model-description {
+  font-size: 24px;
+  line-height: 28px;  
+}
+
+.easy-mode .model-description {
+  padding-top: 48px;
+  color: #1B81DF;
+}
+
+.hard-mode .model-description {
+  padding-top: 48px;
+  color: #1B46DF;
+}
+
+.mode-page {
+  display: grid;
+  align-items: start;
+  margin: 130px auto;
 }

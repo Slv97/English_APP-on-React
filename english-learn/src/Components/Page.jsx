@@ -13,6 +13,27 @@ class Page extends React.Component {
         this.getValue = this.getValue.bind(this)
         this.addWordToLibrary = this.addWordToLibrary.bind(this)
     }
+
+    componentWillMount() {
+        
+    }
+    
+    componentWillUnmount() {
+
+    }
+
+    shouldComponentUpdate() {
+
+    }
+
+    componentWillUpdate() {
+
+    }
+
+    componentDidUpdate() {
+        this.state.library = this.props.library
+    }
+    
     componentDidMount() {
             document.addEventListener('keydown', (event) => {
                 if (this.state.value.length > 0 && this.state.isOpen && event.key === 'Enter') {
@@ -113,4 +134,4 @@ class Page extends React.Component {
 
 export default Page
 
-//46:16
+//09-33
