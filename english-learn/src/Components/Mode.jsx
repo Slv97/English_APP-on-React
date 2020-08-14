@@ -1,18 +1,19 @@
 import React from "react";
-import imgModel from './../img/screenMode1.png' 
+import { NavLink } from "react-router-dom";
 
 export default (props) => {
-    return (
-        <div className='mode-page'>
-            <div className='mode-container'>
-                <div>
-                    <h2 className='mode-title'> {props.modeTitle} Check words Mode </h2>
-                    <p className='model-description easy-mode'>Easy mode</p>
-                </div>
-                <div>
-                    <img src={imgModel} alt="screenMode1" />
-                </div>
+    const modeClassName = 'mode-container ' + props.modeClassName
+    return (    
+        <NavLink to={`/training/${props.path}`}>  
+        <div className={modeClassName}>
+            <div>
+                <h2 className='mode-title'> {props.modeTitle} </h2>
+                <p className='model-description'>{props.modeDescription}</p>
+             </div>
+             <div>
+                <img src={props.imgMode} alt="" />
             </div>
-        </div>
+        </div>  
+        </NavLink>        
     )
 }
