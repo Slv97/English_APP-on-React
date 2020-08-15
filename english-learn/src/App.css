@@ -206,8 +206,9 @@ a.active {
 }
 
 .score {
+  z-index: 4;
   position: absolute;
-  left: 350px;
+  right: 50px;
   color: darkgreen;
   top: 20px;
 }
@@ -218,8 +219,6 @@ a.active {
   justify-content: end;
   column-gap: 20px;
   align-items: center;
-  
-  margin-top: 50px;  
 }
 
 .page-container{
@@ -308,12 +307,25 @@ a.active {
   align-items: center;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
-  background: rgba(215, 228, 255, 0.46);
   padding: 25px 55px 55px 55px;
+}
+
+.easy-mode {
+  background: rgba(215, 228, 255, 0.46);
 }
 
 .hard-mode {
   background: rgba(176, 222, 255, 0.46);
+}
+
+.easy-mode .model-description {
+  padding-top: 48px;
+  color: #1B81DF;
+}
+
+.hard-mode .model-description {
+  padding-top: 48px;
+  color: #1B46DF;
 }
 
 .mode-title {
@@ -328,16 +340,6 @@ a.active {
   line-height: 28px;  
 }
 
-.easy-mode .model-description {
-  padding-top: 48px;
-  color: #1B81DF;
-}
-
-.hard-mode .model-description {
-  padding-top: 48px;
-  color: #1B46DF;
-}
-
 .mode-page {
   display: grid;
   align-items: start;
@@ -350,15 +352,16 @@ a.active {
 
 .game-page {
   position: fixed;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   top: 0;
   left: 0;
-  background: rgba(242, 246, 254, 0.46);
+  background: rgb(242, 246, 254);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .btn-exit {
+  z-index: 2;
   position: absolute;
   width: 176px;
   height: 48px;
@@ -386,7 +389,52 @@ a.active {
 }
 
 .points-block {
+  z-index: 2;
   position: absolute;
   left: 300px;
   top: 40px;
+}
+
+.mode-title-word {
+  font-size: 144px;
+  line-height: 169px;
+  align-items: center;
+  text-align: center;
+  color: #036344;
+}
+
+.mode-title-word-description {
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 140px;
+  color: #000000;
+}
+
+.check-item-block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 30px;
+}
+
+.check-item {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 30px;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  color: #516961;
+}
+
+.mode-wrapper {
+  display: grid;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+  text-align: center;
 }

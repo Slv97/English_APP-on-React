@@ -3,7 +3,7 @@ import {NavLink, useLocation} from "react-router-dom";
 import CheckMode from './CheckMode';
 import WriteMode from './WriteMode';
  
-export default () => {
+export default (props) => {
     const location = useLocation()
     //console.log(location.pathname === '/training/check-mode')
     return (
@@ -18,7 +18,10 @@ export default () => {
                 <span className='error-title'>Errors: </span>
             </div>
             { location.pathname === '/training/check-mode' 
-            ? <CheckMode /> :
+            ? <CheckMode 
+                setScore={props.setScore}
+                score={props.score}
+            /> :
               location.pathname === '/training/write-mode' 
             ? <WriteMode /> : 
             null
