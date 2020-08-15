@@ -10,23 +10,42 @@ import Game from './Components/Games/Game';
 
 
 const App = () => {
-  const [score, setScore] = useState(42)
+  const checkLevel = () => {
+    return Math.floor((0.5 + Math.sqrt(1 + 8*(score)/5)) / 2) - 1
+  }
+  const [score, setScore] = useState(+localStorage.getItem('score') || 0)
+  const [level, setLevel] = useState(checkLevel())
+
+  const CheckLevel = () => {
+    //const level = Math.floor((0.5 + Math.sqrt(1 + 8*(score)/5)) / 2) - 1
+    setLevel(checkLevel())
+  }
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-          <Nav />
+          <Nav level={level} />
           <Score score={score} />          
             <Route path='/library' component={Library} />
             <Route exact path='/training' component={Training} /> 
-            <Route path='/learn' component={Learn} />    
+            <Route path='/learn'>
+              <Learn 
+                CheckLevel={CheckLevel}
+                setScore={setScore}
+                score={score}                                
+              />
+            </Route>    
             <Route path='/training/check-mode'>
-              <Game setScore={setScore} 
-                    score={score}
+              <Game 
+                setScore={setScore} 
+                score={score}
+                CheckLevel={CheckLevel}
               />
             </Route> 
             <Route path='/training/write-mode'>
-              <Game setScore={setScore} 
-                    score={score}
+              <Game 
+                setScore={setScore} 
+                score={score}
+                CheckLevel={CheckLevel}
               />
             </Route>              
       </div>

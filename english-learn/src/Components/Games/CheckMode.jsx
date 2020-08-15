@@ -7,6 +7,7 @@ export default (props) => {
                 props.setCorrectAnswer(props.correctAnswer + 1)
                 props.setScore(props.score + 1)           
                 setCurrentWordIndex(currentWordIndex + 1)
+                props.CheckLevel()
             } else {
                 props.setWrongAnswer(props.wrongAnswer + 1) 
             }     
@@ -18,7 +19,8 @@ export default (props) => {
         }       
     }
     const [currentWordIndex, setCurrentWordIndex] = useState(0)  
-    const [library, setLibrary] = useState(JSON.parse(localStorage.getItem('library')))
+    //Это надо исправить {id: 0, word: '', translate: ''}, (39 минута 5 часть) например в Game привязать к локалСторидж - заполнено не менее 2 слов
+    const [library, setLibrary] = useState(JSON.parse(localStorage.getItem('library')) || [{id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}])
     const [checkArr, setCheckArr] = useState([])  
     const currentWord = library[currentWordIndex].translate
     const [initialScore, setInitialScore] = useState(props.score)
@@ -27,17 +29,19 @@ export default (props) => {
         const filterArr = library.filter((item, index) => index !== currentWordIndex)
         filterArr.sort( () => Math.random() - 0.5)
         const checkArr = [filterArr[0].word, filterArr[1].word, library[currentWordIndex].word]
-        setCheckArr(checkArr.sort( () => Math.random() - 0.5))
+        setCheckArr(checkArr.sort( () => Math.random() - 0.5))        
     }, [props.correctAnswer])
     useEffect( () => {
-        return () => {
-            props.setScore(initialScore)   
-        }
+        // return () => {
+        //     props.setScore(initialScore)   
+        // }
         //componentWillUnmount
     }, [])
     console.log(initialScore)
     console.log(props.score)
-    
+    useEffect(() => {
+        localStorage.setItem('score', props.score)
+    }, [props.score])
     return (
         <div className='mode-wrapper'>
             <div className='mode-title-word'>

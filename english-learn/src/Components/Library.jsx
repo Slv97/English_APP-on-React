@@ -9,9 +9,11 @@ class Library extends React.Component {
             value: '',
             library: JSON.parse(localStorage.getItem('library')) || [{id: 0, word: '', translate: ''}]
         }
+        this.wordsRef = Array(this.state.library.length)
         this.changeMode = this.changeMode.bind(this)
         this.getValue = this.getValue.bind(this)
         this.addWordToLibrary = this.addWordToLibrary.bind(this)
+        this.checkWord = this.checkWord.bind(this)
     }
    
     componentDidMount() {
@@ -31,7 +33,6 @@ class Library extends React.Component {
         await this.setState(prevState => ({
             library: prevState.library.filter((word, i) => i !== index)
         }))
-        //console.log(this.state.library)
         await localStorage.setItem('library', JSON.stringify(this.state.library))
     }
 
@@ -71,12 +72,18 @@ class Library extends React.Component {
         }))
     }
 
+    checkWord() {
+       // let s = this.wordsRef[1]
+       //document.querySelectorAll('.class')
+    }
+
     render() {
         return (
             <div className='page-container'>
                 <div className="add-word-container">
                     {!this.state.isOpen ?
-                        <span className="label-title">Add new word</span> : 
+                        <span className="label-title">Add new word</span> 
+                    : 
                         <div>
                             <input onChange={this.getValue} placeholder="Enter new word" />
                             <span>{this.state.translation}</span>
@@ -93,7 +100,9 @@ class Library extends React.Component {
                         <div>Learn level</div>
                     </div>
                     {this.state.library.map((word, index) => (
-                        <div key={index}>
+                        <div key={index}
+                        ref={el => this.wordsRef[index] = el}
+                        >
                              <div>
                                 {word.id}
                             </div>
@@ -107,6 +116,7 @@ class Library extends React.Component {
                         </div>                        
                     ))}
                 </div>
+                {/* <button onClick={this.checkWord}>Check the word</button> */}
             </div>                  
         )
     }
@@ -114,4 +124,4 @@ class Library extends React.Component {
 
 export default Library
 
-//08-12
+//35-12
