@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Page extends React.Component {
+class Library extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,27 +13,7 @@ class Page extends React.Component {
         this.getValue = this.getValue.bind(this)
         this.addWordToLibrary = this.addWordToLibrary.bind(this)
     }
-
-    componentWillMount() {
-        
-    }
-    
-    componentWillUnmount() {
-
-    }
-
-    shouldComponentUpdate() {
-
-    }
-
-    componentWillUpdate() {
-
-    }
-
-    componentDidUpdate() {
-        this.state.library = this.props.library
-    }
-    
+   
     componentDidMount() {
             document.addEventListener('keydown', (event) => {
                 if (this.state.value.length > 0 && this.state.isOpen && event.key === 'Enter') {
@@ -132,6 +112,6 @@ class Page extends React.Component {
     }
 }
 
-export default Page
+export default Library
 
-//53-22
+//08-12

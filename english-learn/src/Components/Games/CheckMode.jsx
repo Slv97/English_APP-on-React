@@ -31,9 +31,7 @@ export default (props) => {
     }, [props.correctAnswer])
     useEffect( () => {
         return () => {
-            if(library.length - 1 !== currentWordIndex) {
-                props.setScore(initialScore)
-            }            
+            props.setScore(initialScore)   
         }
         //componentWillUnmount
     }, [])
