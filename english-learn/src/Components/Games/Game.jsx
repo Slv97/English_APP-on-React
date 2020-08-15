@@ -2,10 +2,12 @@ import React from 'react';
 import {NavLink, useLocation} from "react-router-dom";
 import CheckMode from './CheckMode';
 import WriteMode from './WriteMode';
+import { useState } from 'react';
  
 export default (props) => {
     const location = useLocation()
-    //console.log(location.pathname === '/training/check-mode')
+    const [correctAnswer, setCorrectAnswer] = useState(0)
+    const [wrongAnswer, setWrongAnswer] = useState(0)
     return (
         <div className='game-page'>
             <NavLink to='/training'>
@@ -14,16 +16,22 @@ export default (props) => {
             </button>
             </NavLink>
             <div className='points-block'>
-                <span className='correct-title'>Correct: </span>
-                <span className='error-title'>Errors: </span>
+                <span className='correct-title'>Correct: {correctAnswer} </span>
+                <span className='error-title'>Errors: {wrongAnswer} </span>
             </div>
             { location.pathname === '/training/check-mode' 
             ? <CheckMode 
                 setScore={props.setScore}
                 score={props.score}
-            /> :
+                correctAnswer={correctAnswer}
+                wrongAnswer={wrongAnswer}
+                setCorrectAnswer={setCorrectAnswer}
+                setWrongAnswer={setWrongAnswer}
+              />
+            :
               location.pathname === '/training/write-mode' 
-            ? <WriteMode /> : 
+            ? <WriteMode /> 
+            : 
             null
             }
         </div>
