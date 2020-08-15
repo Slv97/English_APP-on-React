@@ -10,7 +10,7 @@ import Game from './Components/Games/Game';
 
 
 const App = () => {
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(42)
   return (
     <BrowserRouter>
       <div className="app-wrapper">

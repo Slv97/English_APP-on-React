@@ -1,9 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
  
 export default (props) => {
     const checkWord = () => {
         props.setScore(props.score +1)
     }
+    const [initialScore, setInitialScore] = useState(props.score)
+    useEffect( () => {
+        return () => {
+            props.setScore(initialScore)
+        }
+        //componentWillUnmount
+    }, [])
+    console.log(initialScore)
+    console.log(props.score)
+    
     return (
         <div className='mode-wrapper'>
             <div className='mode-title-word'>
