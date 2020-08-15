@@ -343,3 +343,50 @@ a.active {
   align-items: start;
   margin: 130px auto;
 }
+
+.mode-page a {
+  text-decoration: none;
+}
+
+.game-page {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: rgba(242, 246, 254, 0.46);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.btn-exit {
+  position: absolute;
+  width: 176px;
+  height: 48px;
+  left: 42px;
+  top: 32px;
+  border: none;
+  color: white;
+  background: #036344;
+  font-size: 24px;
+}
+
+.correct-title {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #006A31;
+  margin-right: 15px;
+}
+
+.error-title {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #680000;
+}
+
+.points-block {
+  position: absolute;
+  left: 300px;
+  top: 40px;
+}

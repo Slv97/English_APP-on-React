@@ -1,11 +1,12 @@
 import React from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
 import './App.css';
-import Nav from './Components/Nav/Nav'
-import Score from './Components/Score'
-import Library from './Components/Page'
+import Nav from './Components/Nav/Nav';
+import Score from './Components/Score';
+import Library from './Components/Page';
 import Training from './Components/Training';
 import Learn from './Components/Learn';
+import Game from './Components/Games/Game';
 
 
 const App = () => {
@@ -17,7 +18,8 @@ const App = () => {
           <Score score={score} />          
             <Route path='/library' component={Library} />
             <Route path='/training' component={Training} /> 
-            <Route path='/learn' component={Learn} />         
+            <Route path='/learn' component={Learn} />    
+            <Route path='/training/check-mode' component={Game} />      
       </div>
       </BrowserRouter>
   )
