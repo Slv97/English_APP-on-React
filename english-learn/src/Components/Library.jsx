@@ -52,7 +52,7 @@ class Library extends React.Component {
             }))
         }    
         await this.setState(prevState => ({
-            library: [...prevState.library, {id: this.state.library.length, word: this.state.value, translate: this.state.translation}]
+            library: [...prevState.library, {id: this.state.library.length, word: this.state.value, translate: this.state.translation, correct: 0, learn: 0, error: 0}]
         }))
         await localStorage.setItem('library', JSON.stringify(this.state.library))
         await this.changeMode()

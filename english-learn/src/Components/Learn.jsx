@@ -16,6 +16,8 @@ const Learn = ( {setScore, score, CheckLevel} ) => {
            setIndex(index+1) 
            setScore(score + 0.5)
            CheckLevel()
+           library[index].learn= library[index].learn + 1
+           localStorage.setItem('library', JSON.stringify(library))
         } else {
             setEnd(true)
         }        
@@ -25,8 +27,9 @@ const Learn = ( {setScore, score, CheckLevel} ) => {
         <div className='learn-wrapper'>
             <div className='learn-container'>
                 {!end ?
+                //ДОДЕЛАТЬ ФОРМУЛУ
                     <div className='percentage'>
-                        50%
+                        {Math.floor((word.learn + word.correct - 5 - word.error) / 5 * 100)}%
                     </div> 
                     :
                     null

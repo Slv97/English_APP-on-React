@@ -1,26 +1,40 @@
-import React, {useRef, useState, useContext} from 'react';
+import React, {useRef, useState, useContext, useEffect} from 'react';
 import {Context} from './../../context'
  
 export default (props) => { 
     const context = useContext(Context)
     const inputRef = useRef()
-    const library = JSON.parse(localStorage.getItem('library')) || [{id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}]
+    const [library, setLibrary] = useState(JSON.parse(localStorage.getItem('library')).sort(() => Math.random() - 0.5) || [{id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}])
     const [index, setIndex] = useState(0)
+    useEffect(() => {
+        return () => {
+            localStorage.setItem('score', context.score)
+        }
+    })
     const checkKeyPress = (event) => {
         if(event.key === 'Enter') {
             checkGame()
         }
     }
     const checkGame = () => {
-       if (inputRef.current.value === library[index].translate.replace('the ', '').toLowerCase()) {
-        setIndex(index + 1)
-        
-        props.setCorrectAnswer(props.correctAnswer + 1)
-        context.setScore(context.score + 1)
+       if (index === library.length - 1) {
+        if (inputRef.current.value === library[index].translate.replace('the ', '').toLowerCase()) {
+            setIndex(index + 1)
+            
+            props.setCorrectAnswer(props.correctAnswer + 1)
+            context.setScore(context.score + 1)
+            library[index].correct = library[index].correct + 1
+            localStorage.setItem('library', JSON.stringify(library))
+           } else {
+            props.setWrongAnswer(props.wrongAnswer + 1)
+            library[index].error = library[index].error + 1
+            localStorage.setItem('library', JSON.stringify(library))
+           }
+           inputRef.current.value = ''
        } else {
-        props.setWrongAnswer(props.wrongAnswer + 1)
-       }
-       inputRef.current.value = ''
+           alert('Good job')
+           setLibrary(JSON.parse(localStorage.getItem('library')).sort(() => Math.random() - 0.5))
+       }              
     }
 
     return (

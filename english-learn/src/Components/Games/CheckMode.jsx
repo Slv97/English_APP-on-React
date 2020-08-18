@@ -10,8 +10,13 @@ export default (props) => {
                 context.setScore(context.score + 1)           
                 setCurrentWordIndex(currentWordIndex + 1)
                 props.CheckLevel()
+                library[currentWordIndex].correct = library[currentWordIndex].correct + 1
+                localStorage.setItem('library', JSON.stringify(library))
+                console.log(library)
             } else {
                 props.setWrongAnswer(props.wrongAnswer + 1) 
+                library[currentWordIndex].error = library[currentWordIndex].error + 1
+                localStorage.setItem('library', JSON.stringify(library))
             }     
         } else {
             alert('Game Over')
@@ -25,7 +30,6 @@ export default (props) => {
     const [library, setLibrary] = useState(JSON.parse(localStorage.getItem('library')) || [{id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}])
     const [checkArr, setCheckArr] = useState([])  
     const currentWord = library[currentWordIndex].translate
-    const [initialScore, setInitialScore] = useState(props.score)
 
     useEffect( () => {     
         const filterArr = library.filter((item, index) => index !== currentWordIndex)
@@ -33,14 +37,7 @@ export default (props) => {
         const checkArr = [filterArr[0].word, filterArr[1].word, library[currentWordIndex].word]
         setCheckArr(checkArr.sort( () => Math.random() - 0.5))        
     }, [props.correctAnswer])
-    useEffect( () => {
-        // return () => {
-        //     props.setScore(initialScore)   
-        // }
-        //componentWillUnmount
-    }, [])
-    console.log(initialScore)
-    console.log(context.score)
+    
     useEffect(() => {
         localStorage.setItem('score', context.score)
     }, [context.score])
