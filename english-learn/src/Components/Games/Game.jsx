@@ -31,7 +31,15 @@ export default (props) => {
               />
             :
               location.pathname === '/training/write-mode' 
-            ? <WriteMode /> 
+            ? <WriteMode 
+                setScore={props.setScore}
+                score={props.score}
+                correctAnswer={correctAnswer}
+                wrongAnswer={wrongAnswer}
+                setCorrectAnswer={setCorrectAnswer} 
+                setWrongAnswer={setWrongAnswer}
+                CheckLevel={props.CheckLevel}            
+              /> 
             : 
             null
             }

@@ -55,7 +55,7 @@ a.active {
   font-size: 36px;
   line-height: 42px;
   text-transform: uppercase;
-
+  white-space: nowrap; 
   color: #6ff3c8;
 }
 
@@ -67,7 +67,6 @@ a.active {
   cursor: pointer;
   width: 54px;
   height: 54px;
-
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.03);
   box-sizing: border-box;
@@ -80,6 +79,7 @@ a.active {
   background-position: center;
   background-repeat: no-repeat;
   transition: 0.2s linear;
+  cursor: pointer;
 }
 
 .btn-round.close {
@@ -93,6 +93,7 @@ a.active {
   background-color: #1aad7e;
   border: 1px solid rgba(0, 0, 0, 0.03);
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .btn-next {
@@ -102,6 +103,7 @@ a.active {
   padding: 0px 15px 4px 60px;
   background-color: #0C9267;
   color: white;
+  cursor: pointer;
 }
 
 .btn-repeat {
@@ -114,6 +116,7 @@ a.active {
   font-weight: bold;
   background-color: #0C9267;
   color: white;
+  cursor: pointer;
 }
 
 .app-wrapper {
@@ -372,6 +375,7 @@ a.active {
   color: white;
   background: #036344;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .correct-title {
@@ -462,6 +466,7 @@ a.active {
   color: white;
   padding: 8px;
   border: none;
+  cursor: pointer;
 }
 
 .input-block{
