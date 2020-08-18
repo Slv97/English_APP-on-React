@@ -7,6 +7,7 @@ import Library from './Components/Library';
 import Training from './Components/Training';
 import Learn from './Components/Learn';
 import Game from './Components/Games/Game';
+import {Context} from './context'
 
 
 const App = () => {
@@ -17,11 +18,11 @@ const App = () => {
   const [level, setLevel] = useState(checkLevel())
 
   const CheckLevel = () => {
-    //const level = Math.floor((0.5 + Math.sqrt(1 + 8*(score)/5)) / 2) - 1
     setLevel(checkLevel())
   }
   return (
     <BrowserRouter>
+    <Context.Provider value={{setScore, score}} >
       <div className="app-wrapper">
           <Nav level={level} />
           <Score score={score} />          
@@ -36,20 +37,17 @@ const App = () => {
             </Route>    
             <Route path='/training/check-mode'>
               <Game 
-                setScore={setScore} 
-                score={score}
                 CheckLevel={CheckLevel}
               />
             </Route> 
             <Route path='/training/write-mode'>
               <Game 
-                setScore={setScore} 
-                score={score}
                 CheckLevel={CheckLevel}
               />
             </Route>              
       </div>
-      </BrowserRouter>
+    </Context.Provider>
+    </BrowserRouter>
   )
 }
 

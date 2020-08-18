@@ -1,15 +1,9 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useContext} from 'react';
+import {Context} from './../../context'
  
 export default (props) => { 
-    // const aE= ['1', '3', '5']  
+    const context = useContext(Context)
     const inputRef = useRef()
-    // const aERef = useRef(Array(aE.length)) 
-    const checkWord = () => {
-        //let s = inputRef.current.value
-        // let s = aERef.current[2]
-        // debugger
-        // console.log(s)
-    }
     const library = JSON.parse(localStorage.getItem('library')) || [{id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}, {id: 0, word: '', translate: ''}]
     const [index, setIndex] = useState(0)
     const checkKeyPress = (event) => {
@@ -22,8 +16,7 @@ export default (props) => {
         setIndex(index + 1)
         
         props.setCorrectAnswer(props.correctAnswer + 1)
-        props.setScore(props.score + 1)
-        //console.log(true)
+        context.setScore(context.score + 1)
        } else {
         props.setWrongAnswer(props.wrongAnswer + 1)
        }

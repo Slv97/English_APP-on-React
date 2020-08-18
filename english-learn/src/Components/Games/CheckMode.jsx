@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import {Context} from './../../context'
  
 export default (props) => {
+    const context = useContext(Context)
     const checkWord = (word) => {
         if (library.length - 1 !== currentWordIndex) {
             if (word === library[currentWordIndex].word) {
                 props.setCorrectAnswer(props.correctAnswer + 1)
-                props.setScore(props.score + 1)           
+                context.setScore(context.score + 1)           
                 setCurrentWordIndex(currentWordIndex + 1)
                 props.CheckLevel()
             } else {
@@ -38,10 +40,10 @@ export default (props) => {
         //componentWillUnmount
     }, [])
     console.log(initialScore)
-    console.log(props.score)
+    console.log(context.score)
     useEffect(() => {
-        localStorage.setItem('score', props.score)
-    }, [props.score])
+        localStorage.setItem('score', context.score)
+    }, [context.score])
     return (
         <div className='mode-wrapper'>
             <div className='mode-title-word'>
