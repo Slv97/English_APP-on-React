@@ -439,3 +439,34 @@ a.active {
   row-gap: 10px;
   text-align: center;
 }
+
+.customInput {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 8px 13px;
+  border-bottom: 3px solid #084934;
+}
+
+/* .customInput:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  background-color: #084934;
+} */
+
+.btn-enter {
+  background-color: #084934;
+  color: white;
+  padding: 8px;
+  border: none;
+}
+
+.input-block{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 8fr 2fr;
+  column-gap: 10px;
+}

@@ -12,10 +12,14 @@ export default (props) => {
     }
     return (
         <div className='mode-wrapper'>
-           <input ref={inputRef} id='inputID' type="text" placeholder='Enter word' />
-           {/* <button onClick={checkWord}>Check</button>
-           {aE.map((element, index) => <div ref={el => aERef.current[index] = el} > {element} </div>
-           )} */}
+            <div className='mode-title-word'>
+                Forest
+            </div>
+            <p className='mode-title-word-description'>Write translation fo this word</p>
+            <div className='input-block'>
+                <input ref={inputRef} id='inputID' type="text" placeholder='Enter word' className='customInput' />
+                <button className='btn-enter' onClick={checkWord}>Enter</button>
+            </div>         
         </div>
     )
 }
