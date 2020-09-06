@@ -46,7 +46,7 @@ export default (props) => {
             <div className='mode-title-word'>
                 {currentWord}
             </div>
-            <p className='mode-title-word-description'>Set translation fo this word</p>
+            <p className='mode-title-word-description'>Set translation for this word</p>
             <div className='check-item-block'>
                 {checkArr.map((item, index) => 
                     <div key={index} className='check-item' onClick={() => checkWord(item)}>

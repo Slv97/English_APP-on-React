@@ -42,7 +42,7 @@ export default (props) => {
             <div className='mode-title-word'>
                 {library[index].word}
             </div>
-            <p className='mode-title-word-description'>Write translation fo this word</p>
+            <p className='mode-title-word-description'>Write translation for this word</p>
             <div className='input-block'>
                 <input onKeyPress={checkKeyPress} ref={inputRef} id='inputID' type="text" placeholder='Enter word' className='customInput' />
                 <button className='btn-enter' onClick={checkGame}>Enter</button>

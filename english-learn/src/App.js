@@ -8,6 +8,7 @@ import Training from './Components/Training';
 import Learn from './Components/Learn';
 import Game from './Components/Games/Game';
 import {Context} from './context'
+import Welcome from './Components/Nav/Welcome'
 
 
 const App = () => {
@@ -23,8 +24,10 @@ const App = () => {
   return (
     <BrowserRouter>
     <Context.Provider value={{setScore, score}} >
-      <div className="app-wrapper">
+      <div className="app-wrapper">          
+          
           <Nav level={level} />
+          <Route exact path='/' component={Welcome} />
           <Score score={score} />          
             <Route path='/library' component={Library} />
             <Route exact path='/training' component={Training} /> 

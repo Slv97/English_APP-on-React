@@ -29,8 +29,12 @@ const Learn = ( {setScore, score, CheckLevel} ) => {
                 {!end ?
                 //ДОДЕЛАТЬ ФОРМУЛУ
                     <div className='percentage'>
-                        {Math.floor((word.learn + word.correct - 5 - word.error) / 5 * 100)}%
-                    </div> 
+                        {Math.floor((100 - ((100)/(word.id))))}%
+
+                        {/* {Math.floor((word.learn + word.correct - 5 - word.error) / 5 * 100)}% */}
+                        {console.log(this.wordsRef)}
+                        
+                    </div>                     
                     :
                     null
                 }
@@ -66,7 +70,7 @@ const Learn = ( {setScore, score, CheckLevel} ) => {
                 } 
             </div>
         </div>        
-    )
+    )    
 }
 
 export default Learn

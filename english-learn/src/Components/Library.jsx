@@ -10,6 +10,8 @@ class Library extends React.Component {
             library: JSON.parse(localStorage.getItem('library')) || [{id: 0, word: '', translate: ''}]
         }
         this.wordsRef = Array(this.state.library.length)
+        //////////////////////////////////////////////////////////////////
+        console.log(this.wordsRef)
         this.changeMode = this.changeMode.bind(this)
         this.getValue = this.getValue.bind(this)
         this.addWordToLibrary = this.addWordToLibrary.bind(this)
@@ -123,5 +125,3 @@ class Library extends React.Component {
 }
 
 export default Library
-
-//01-23
